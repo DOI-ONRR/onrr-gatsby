@@ -27,7 +27,7 @@ const Announcements = ({ announcements }) => {
       return (
       <Card className={classes.root}>
         <CardContent>
-          <Typography variant="h2">
+          <Typography variant="h3">
             {announcement.node.title}
           </Typography>
           <Typography variant="body">
