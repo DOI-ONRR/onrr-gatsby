@@ -17,4 +17,4 @@ workflows:
   build: 
     when: << pipline.parameters.run_workflow_build >>
     jobs:
-      - quick_gatsby build
+      - quick_gatsby_build
