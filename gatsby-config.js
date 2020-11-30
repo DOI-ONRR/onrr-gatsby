@@ -1,8 +1,12 @@
+require("dotenv").config({
+  path: `.env.${process.env.NODE_ENV}`,
+})
+
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Default Starter`,
-    description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
-    author: `@gatsbyjs`,
+    title: `Office of Natural Resources Revenue`,
+    description: `Gatsby default starter with Material UI and connection to Strapi`,
+    author: `jerome.louis@onrr.gov`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -11,6 +15,18 @@ module.exports = {
       options: {
         name: `images`,
         path: `${__dirname}/src/images`,
+      },
+    },
+    {
+      resolve: 'gatsby-source-strapi',
+      options: {
+        apiURL: process.env.GATSBY_STRAPI_API_URL || 'http://localhost:1337',
+        contentTypes: [ // list of content-types
+          'announcements',
+          'documents',
+          'pages',
+        ],
+        queryLimit: 1000,
       },
     },
     `gatsby-transformer-sharp`,
