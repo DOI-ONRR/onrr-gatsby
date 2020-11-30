@@ -20,5 +20,6 @@ jobs:
           command: npm run build
 
 workflows:
-  jobs:
-    - gatsby_quick_build
+  test_gatsby_build:
+    jobs:
+      - gatsby_quick_build
