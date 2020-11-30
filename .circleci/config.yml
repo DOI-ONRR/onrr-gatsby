@@ -1,10 +1,21 @@
 version: 2.1
 
+paramaters:
+  run_workflow_build:
+    default: true
+    type: boolean
+
 jobs:
-  build:
+  quick_gatsby_build:
     docker:
       - image: circleci/node:12.4
     steps:
       - checkout
       - run: echo "Start gatsby build..."
   
+workflows:
+  version: 2.1
+  build: 
+    when: << pipline.parameters.run_workflow_build >>
+    jobs:
+      - quick_gatsby build
